@@ -5,7 +5,7 @@ parent: Docker container
 nav_order: 1
 
 presentation: |
-  Docker Regsitry  is a service for storing and distributing Docker images.
+  Docker Registry  is a service for storing and distributing Docker images.
 
 prerequis: |
   Install Docker on your virtual machine.
@@ -19,7 +19,7 @@ installation: |
   ```bash
   sudo apt-get install apache2-utils -y
   ```
-  Create a folder naming `registry` into the directory `docker`.
+  Create a folder named `registry` into the directory `docker`.
   ```bash
   sudo mkdir /docker/registry
   ```
@@ -63,7 +63,7 @@ installation: |
   networks:
     docker-registry:
   ```
-  Create a folder naming `auth`
+  Create a folder named `auth`
   ```bash
   sudo mkdir auth
   ```
@@ -71,15 +71,15 @@ installation: |
   ```bash
   cd auth/
   ```
-  Create an user.
+  Create a user.
   ```bash
-  sudo htpasswd -Bc registry.password nom_utilisateur
+  sudo htpasswd -Bc registry.password username
   ```
   Start the container.
   ```bash
   cd .. && sudo docker compose up -d
   ```
-  Open a web browser and go the following uri : `http://IP:8080`
+  Open a web browser and go the following URI : `http://IP:8080`
 
 configuration: |
   Connect to the registry:
@@ -87,60 +87,60 @@ configuration: |
   - Connect to the server over SSH.
   - Create the file `/etc/docker/daemon.json`.
 
-```bash
+    ```bash
     sudo nano /etc/docker/daemon.json
-```
+    ```
 
   - Add the following content to the file.
 
-```json
+    ```json
     { "insecure-registries": ["192.168.1.1:5000"] }
-```
+    ```
 
   - Restart the `docker` service.
 
-```bash
+    ```bash
     sudo systemctl restart docker
-```
+    ```
 
   - Connect to the registry.
 
-```bash
+    ```bash
     sudo docker login 192.168.1.1:5000
-```
+    ```
 
   To create and push a Docker image:
 
   - Download a base image.
 
-```bash
+    ```bash
     sudo docker pull alpine
-```
+    ```
 
   - Add a tag to your image.
 
-```bash
+    ```bash
     sudo docker tag alpine 192.168.1.1:5000/my-alpine
-```
+    ```
 
   - Push the image to the registry.
 
-```bash
+    ```bash
     sudo docker push 192.168.1.1:5000/my-alpine
-```
+    ```
 
   To pull an image:
 
   - Download the image.
 
-```bash
+    ```bash
     sudo docker pull 192.168.1.1:5000/my-alpine
-```
+    ```
 
 sauvegarde: |
   Backup the `/docker/registry` folder.
   ```bash
-  sudo rsync -aqz /docker/registry user@192.168.1.2:/docker/registry/container/
+  sudo rsync -aqz /docker/registry/ user@192.168.1.2:/docker/registry/container/
   ```
   Backup the `/etc/docker` folder.
   ```bash
@@ -152,9 +152,9 @@ restauration: |
   ```bash
   sudo docker stop registry registry-ui
   ```
-  Copy the data from the bacup server
+  Copy the data from the backup server
   ```bash
-  sudo scp -rp user@192.168.1.2:/docker/registry/container /docker/registry/
+  sudo scp -rp user@192.168.1.2:/docker/registry/container/ /docker/registry/
   ```
   Restart the containers.
   ```bash
@@ -175,6 +175,7 @@ mise_a_jour: |
   sudo nano /docker/registry/docker-compose.yml
   ```
   Change the images tag.
+  
   Restart the containers.
   ```bash
   cd /docker/registry && sudo docker compose up -d
