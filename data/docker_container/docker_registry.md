@@ -3,9 +3,6 @@ layout: software
 title: Docker Registry
 parent: Docker container
 nav_order: 1
----
-
-# Docker Registry
 
 presentation: |
   Docker Registry est un service de stockage et de distribution d'images Docker.
