@@ -1,5 +1,7 @@
 - key: presentation
   title: Présentation
+- key: prerequis
+  title: Prérequis
 - key: installation
   title: Installation
 - key: configuration
