@@ -33,8 +33,10 @@ def parse(path)
   return [nil, nil, "front matter vide ou invalide"] unless data.is_a?(Hash)
 
   [data, m[2], nil]
+rescue Psych::SyntaxError => e
+  [nil, nil, "YAML invalide ligne #{e.line + 1} du fichier (#{e.problem}) : souvent une ligne non indentée sous un bloc `|`, ou une tabulation"]
 rescue Psych::Exception => e
-  [nil, nil, "YAML invalide (indentation ?) : #{e.message}"]
+  [nil, nil, "YAML invalide : #{e.message}"]
 end
 
 def content_files
