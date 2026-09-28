@@ -1,0 +1,12 @@
+- key: presentation
+  title: Présentation
+- key: installation
+  title: Installation
+- key: configuration
+  title: Configuration
+- key: sauvegarde
+  title: Sauvegarde
+- key: restauration
+  title: Restauration
+- key: mise_a_jour
+  title: Mise à jour

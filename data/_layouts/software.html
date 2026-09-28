@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% for section in site.data.software_sections %}
+  <h2 id="{{ section.key }}">{{ section.title }}</h2>
+  {% assign section_body = page[section.key] %}
+  {% if section_body %}
+    {{ section_body | markdownify }}
+  {% else %}
+    <p><em>À compléter.</em></p>
+  {% endif %}
+{% endfor %}
