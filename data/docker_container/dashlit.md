@@ -89,7 +89,7 @@ mise_a_jour: |
   Remove the container.
   ```bash
   sudo docker rm -f dashlit
-  ``
+  ```
   Remove the `ghcr.io/codewec/dashlit:latest` image.
   ```bash
   sudo docker image rm -f ghcr.io/codewec/dashlit:latest
