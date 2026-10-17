@@ -46,6 +46,8 @@ installation: |
   ```
   Open a web browser and go the following URI : `http://IP`
 
+configuration: |
+
 sauvegarde: |
   Backup the `/docker/heimdall` folder.
   ```bash
